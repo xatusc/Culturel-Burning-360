@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>360 photo embed using aframe</title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+    <style type="text/css">
+        body {
+            margin: 0 auto;
+            padding: 1em;
+            max-width: 800px;
+        }
+        
+        .embed360 {
+            height: 350px;
+            max-width: 700px;
+            margin: 1em;
+        }
+
+    </style>
+    <script src="https://cdn.rawgit.com/leemark/embed360/a1e48f2bc7cf77f8f4bcae2ceeafe91a2e31fbf1/embed360.js"></script>
+</head>
+
+<body>
+
+    <h1>embed360</h1>
+    <p>Easily embed multiple 360° photos into your webpages using the power and simplicity of <a href="https://aframe.io/">A-frame</a>.</p>
+
+    <div class="embed360">
+        <img src="https://leemark.github.io/embed360/img/example1.jpg">
+    </div>
+    
+    <h2>Why use this plugin?</h2>
+    <p>A-frame makes it <a href="https://aframe.io/docs/0.5.0/introduction/">very easy</a> to build WebVR experiences, including the ability to <a href="https://aframe.io/docs/0.5.0/primitives/a-sky.html">display 360 images</a> and even to embed them <a href="https://aframe.io/docs/0.5.0/components/embedded.html">into existing html pages</a>.</p>
+
+    <p>Where it gets tricky though, is if you want to include multiple 360 photos into the same page. Currently, only one A-frame "scene" (&lt;a-scene&gt;) can exist on a page, so if you need multiple 360 photos to be embedded in a page, you'd need to create a new html page for each photo and embed each one of those new pages in an iframe.</p>
+    <p>The embed360.js script handles all of this for you, by dynamically creating these iframes and building a simple A-frame 360 photo scene inside each one.</p>
+    <div class="embed360" data-rotation="0 90 -10">
+        <img src="https://leemark.github.io/embed360/img/example2.jpg">
+    </div>
+    <h2>Usage:</h2>
+
+    <p>Add a div and an image for each 360 photo:</p>
+    <p>
+    <code>
+        &lt;div class="embed360"&gt;<br>
+        &nbsp;&nbsp;&lt;img src="/path/to/image.jpg"&gt;<br>
+        &lt;/div&gt;<br>
+    </code>
+    </p>
+    <p>Include the embed360 script:</p>
+    <p>
+    <code>
+        &lt;script src="path/to/embed360.js"&gt;&lt;/script&gt;<br>
+    </code>
+    </p>
+    <p>Call embed360() and pass in a class, id, or other selector for the photo container(s):</p>
+    <p>
+    <code> 
+        &lt;script&gt;<br>
+        &nbsp;&nbsp;embed360('.embed360');<br>
+        &lt;/script&gt;<br>
+    </code>
+    </p>
+    <p>It's recommended that you specify a height and max-width for your 360 photo containers so they end up sized appropriately and not too short or too wide. How you do this is up to you, but here is the CSS used for the examples on this page:</p>
+    <p>
+    <code>
+    .embed360 {<br>
+    &nbsp;&nbsp;height: 350px;<br>
+    &nbsp;&nbsp;max-width: 700px;<br>
+        }<br>
+    </code>
+    </p>    
+    <p>That's it!</p>
+
+    <div class="embed360">
+        <img src="https://leemark.github.io/embed360/img/example3.jpg">
+    </div>
+    
+    <h2>Options:</h2>
+    
+    <p>Provide your own path to the aframe library, as the second argument to embed360() (uses cloudflare CDN version by default).</p>
+    <p>
+    <code> 
+        &lt;script&gt;<br>
+        &nbsp;&nbsp;embed360('.embed360', '/your/path/to/aframe.js');<br>
+        &lt;/script&gt;<br>
+    </code>
+    </p>
+    <p>Use a data attribute to specify the starting position (<a href="https://aframe.io/docs/0.5.0/components/rotation.html">x, y, and z-axis rotation</a>) for each photo.</p>
+    <p>
+    <code> 
+        &lt;div class="embed360" data-rotation="0 90 -10"&gt;<br>
+        &nbsp;&nbsp;&lt;img src="/path/to/image.jpg"&gt;<br>
+        &lt;/div&gt;<br>
+    </code>
+    </p>
+    
+    <h2>Browser support:</h2>
+    <p>Works in latest versions of Chrome, Firefox, Safari, Edge. <a href="https://github.com/aframevr/aframe/issues/1475">Works in IE11</a> by using a <a href="https://gist.github.com/leemark/777b5ce94bce409b5f208c924bb5878b">polyfill for CustomEvent</a> that A-frame needs.</p>
+    
+    <script>
+        embed360('.embed360');
+    </script>
+    
+    <a href="https://github.com/leemark/embed360"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"></a>
+</body>
+
+</html>
